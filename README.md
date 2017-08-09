@@ -6,11 +6,11 @@ Proof of concept recipes site on Polymer.
 
 Features:
 
-* **offline** mode (pages and data)
-* instant **image preview** switching to the full sized, when loaded
-* **page transitions**
-* **Firebase** realtime
-* **responsive** design
+* **offline** mode (pages and data);
+* instant **image preview** switching to the full sized, when loaded;
+* **page transitions**;
+* **Firebase** realtime;
+* **responsive** design.
 
 ## Screenshots
 ### Main
