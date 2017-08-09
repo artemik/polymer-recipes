@@ -1,6 +1,7 @@
 # Polymer Recipes Site
 
-Proof of concept recipes site on Polymer. **Demo**: [https://lori-server.herokuapp.com/app](https://lori-server.herokuapp.com/app).
+Proof of concept recipes site on Polymer.
+**Demo**: [https://lori-server.herokuapp.com/app](https://lori-server.herokuapp.com/app).
 
 Features:
 
