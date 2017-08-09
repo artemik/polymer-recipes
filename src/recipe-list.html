@@ -1,0 +1,158 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../bower_components/neon-animation/neon-shared-element-animatable-behavior.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/plastic-image/plastic-image.html">
+
+<link rel="import" href="shared-styles.html">
+
+
+<dom-module id="recipe-list">
+  <template>
+    <style include="shared-styles">
+
+      :host {
+        display: block;
+        padding: 10px;
+      }
+
+      .card {
+        margin: 8px;
+        width: 340px;
+        height: 275px;
+        position: relative;
+        z-index: 0;
+      }
+
+      .contentBox {
+        position: absolute;
+      }
+
+      .card plastic-image {
+        width: 100%;
+        height: 180px;
+        background: #ddd;
+      }
+
+      @media (max-width: 800px) {
+        .contentBox {
+          width: 100%;
+        }
+
+        .card {
+          width: initial;
+        }
+      }
+
+      .info-box {
+        float: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 33%;
+      }
+
+      .info-box iron-icon {
+        margin-right: 6px;
+      }
+
+      iron-list {
+        background: rgb(238, 238, 238);
+        --iron-list-items-container: {
+        };
+      }
+
+    </style>
+
+    <iron-list items="{{items}}" as="item" grid mutable-data id="ironlist">
+      <template>
+        <div class="contentBox">
+          <div class="card" on-tap="_onRecipeTap">
+            <plastic-image lazy-load preload fade placeholder="[[item.imagePreview]]" srcset="[[item.image]]" sizing="cover"></plastic-image>
+            <div class="recipeName">[[item.name]]</div>
+            <div>
+              <div class="info-box"><iron-icon icon="icons:star"></iron-icon><span>[[item.rating]]</span></div>
+              <div class="info-box"><iron-icon icon="editor:show-chart"></iron-icon><span>[[item.difficulty]]</span></div>
+              <div class="info-box"><iron-icon icon="device:access-time"></iron-icon><span>[[item.duration]]</span></div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </iron-list>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'recipe-list',
+
+      behaviors: [
+        Polymer.NeonSharedElementAnimatableBehavior
+      ],
+
+      properties: {
+        items: {
+          type: Array,
+          value: function () {
+            return {};
+          }
+        },
+        animationConfig: {
+          type: Object,
+          value: function () {
+            return {
+              'exit': [{
+                name: 'ripple-animation',
+                id: 'ripple',
+                fromPage: this
+              }, {
+                name: 'hero-animation',
+                id: 'hero',
+                fromPage: this
+              }]
+            }
+          }
+        }
+      },
+
+      _redrawList: function () {
+        this.$.ironlist.fire('iron-resize');
+      },
+
+      _onRecipeTap: function (event) {
+        var path = Polymer.dom(event).path;
+        var target;
+        for (var i = 0; i < path.length; i++) {
+          if (path[i].className === 'contentBox') {
+            target = path[i];
+            break;
+          }
+        }
+
+        // Configure the page animation.
+        this.sharedElements = {
+          'hero': target,
+          'ripple': target
+        };
+        this.animationConfig['exit'][0].gesture = {
+          x: event.detail.x || event.pageX || 100,
+          y: event.detail.y || event.pageY || 100
+        };
+
+        this.fire('recipe-tap', event.model.item);
+      },
+
+    });
+  </script>
+</dom-module>
