@@ -1,6 +1,6 @@
 # Polymer Recipes Site
 
-Proof of concept recipes site on Polymer.
+Proof of concept recipes site on Polymer. Demo: [https://lori-server.herokuapp.com/app](https://lori-server.herokuapp.com/app).
 
 Features:
 
@@ -10,8 +10,6 @@ Features:
 * **Firebase** realtime
 * **responsive** design
 
-## Demo
-[https://lori-server.herokuapp.com/app](https://lori-server.herokuapp.com/app). 
 ## Screenshots
 ### Main
 <img src="https://raw.githubusercontent.com/artemik/polymer-recipes/master/docs/main.gif">
@@ -20,3 +18,4 @@ Features:
 <img src="https://raw.githubusercontent.com/artemik/polymer-recipes/master/docs/offline.png">
 
 ### Mobile
+<img src="https://raw.githubusercontent.com/artemik/polymer-recipes/master/docs/mobile.png">
