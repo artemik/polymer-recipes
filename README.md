@@ -17,5 +17,6 @@ Features:
 <img src="https://raw.githubusercontent.com/artemik/polymer-recipes/master/docs/main.gif">
 
 ### Offline Mode
-<img src="https://raw.githubusercontent.com/artemik/polymer-recipes/master/docs/main.gif">
+<img src="https://raw.githubusercontent.com/artemik/polymer-recipes/master/docs/offline.png">
+
 ### Mobile
