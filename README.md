@@ -14,5 +14,7 @@ Features:
 [https://lori-server.herokuapp.com/app](https://lori-server.herokuapp.com/app). 
 ## Screenshots
 ### Main
+<img src="https://raw.githubusercontent.com/artemik/polymer-recipes/master/docs/main.gif">
+
 ### Offline Mode
 ### Mobile
